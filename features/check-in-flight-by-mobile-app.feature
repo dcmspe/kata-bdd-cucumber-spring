@@ -1,5 +1,4 @@
-Feature: Withdrawal from an ATM
-  A client wants to withdrawal money at an ATM
+Feature: As a passenger I want to
 
   @Withdraw
   Scenario Outline: Withdrawal money from an ATM that contains enough money
