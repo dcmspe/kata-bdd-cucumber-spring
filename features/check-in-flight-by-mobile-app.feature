@@ -1,16 +1,13 @@
-Feature: As a passenger I want to
+Feature: As a passenger. I want to do the check-in of my flights by the app from my cellphone. Sho that I can make easier
+  my check-in with my cellphone and use it as my boarding pass.
 
   @Withdraw
-  Scenario Outline: Withdrawal money from an ATM that contains enough money
-    Given a client having a valid account
-    And the account balance is <init_balance> euros
-    And the card is valid
-    And the ATM contains enough money
-    When the account holder requests <money> euros
-    Then the ATM should dispense <money> euros
-    And the account balance should be <new_balance> euros
-    And the card should be returned
+  Scenario Outline: I want to make a check-in using my cellphone
+    Given the user has made a valid login with an <user> and <password>
+    And the user has a flight to checkin
+    When the user make a checkin validation
+    Then he needs to receive a valid notification that he made a check-in
 
     Examples:
-      | init_balance | money   | new_balance |
-      | 100.0        | 20.0    | 80.0        |
+      | user | password |
+      | marques_pombal | capararica |
