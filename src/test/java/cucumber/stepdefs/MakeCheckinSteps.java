@@ -1,4 +1,4 @@
-package cucumber;
+package cucumber.stepdefs;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,10 +25,11 @@ public class MakeCheckinSteps{
 
     private Flight flight;
 
-    String checkInMessage;
+    private String checkInMessage;
 
-    @Given("the user has made a valid login with an {user} and {password}")
-    public void the_user_has_made_a_valid_login_with_an_user_and_password(String user, String password) {
+    @Given("the user has made a valid login with an {string} and {string}")
+    public void the_user_has_made_a_valid_login_with_an_and(String user, String password) {
+
         this.loginService = Mockito.mock(LoginService.class);
 
         System.out.println("User:"+user);
@@ -41,6 +42,7 @@ public class MakeCheckinSteps{
 
     @Given("the user has a flight to checkin")
     public void the_user_has_a_flight_to_checkin() {
+
         this.flightService = Mockito.mock(FlightService.class);
 
         List<Flight> flights = new ArrayList<>();
@@ -50,7 +52,6 @@ public class MakeCheckinSteps{
         Mockito.when(flightService.getFlightsByUser(userLogged)).thenReturn(flights);
 
         this.flight = flightService.getFlightsByUser(userLogged).get(0);
-
     }
 
     @When("the user make a checkin validation")
@@ -58,12 +59,13 @@ public class MakeCheckinSteps{
 
         Mockito.when(flightService.checkIn(this.flight.getBoardingPass())).thenReturn("The checkin was made with success!");
 
-        String checkInMessage = flightService.checkIn(this.flight.getBoardingPass());
+        checkInMessage = flightService.checkIn(this.flight.getBoardingPass());
     }
 
     @Then("he needs to receive a valid notification that he made a check-in")
     public void he_needs_to_receive_a_valid_notification_that_he_made_a_check_in() {
-        Assert.assertEquals("The checkin was made with success!", checkInMessage);
-    }
 
+        Assert.assertEquals("The checkin was made with success!", checkInMessage);
+
+    }
 }
