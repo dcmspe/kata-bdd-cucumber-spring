@@ -6,8 +6,8 @@ test {
         destinationFile = file("${buildDir}/jacoco/${project.name}.exec")
         classDumpDir = file("${buildDir}/jacoco/classpathdumps")
         classDumpDir = null
-        includes = ['com.newlight77.bootstrap.*']
-        excludes = ['com.newlight77.bootstrap.model.*', 'com.newlight77.bootstrap.exception.*']
+        includes = ['pt.tabajara_airflights.*']
+        excludes = ['pt.tabajara_airflights.models.*']
         address = "localhost"
         port = 9000
     }
@@ -55,7 +55,7 @@ jacocoTestCoverageVerification {
                 value = 'TOTALCOUNT'
 //                value = 'COVEREDRATIO'
 //                minimum = 0.8
-                maximum = 0.3
+                 maximum = 0.5
             }
         }
     }
